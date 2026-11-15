@@ -1,0 +1,43 @@
+Factor,Level,SEX_PRINT,N,Weighted_pct
+Activity,Aerobic only,Female,9827,33.988487014
+Activity,Aerobic only,Male,6647,29.75009128
+Activity,Both,Female,2847,10.320138767
+Activity,Both,Male,4520,21.214872662
+Activity,Neither,Female,16149,50.628214219
+Activity,Neither,Male,9775,39.208357789
+Activity,Strength only,Female,1645,5.0631600003
+Activity,Strength only,Male,2488,9.8266782695
+Age,20-29,Female,3233,15.554686184
+Age,20-29,Male,2877,17.933027107
+Age,30-39,Female,4411,16.831291135
+Age,30-39,Male,3408,18.380747841
+Age,40-49,Female,5476,19.511747944
+Age,40-49,Male,4080,20.163571808
+Age,50-59,Female,6038,20.09674902
+Age,50-59,Male,4290,19.870591019
+Age,60-69,Female,5819,14.701007604
+Age,60-69,Male,4546,14.102833905
+Age,70-79,Female,4101,9.6949544755
+Age,70-79,Male,3276,7.4265419175
+Age,80+,Female,1390,3.6095636371
+Age,80+,Male,953,2.1226864022
+Education,College+,Female,10570,39.301122094
+Education,College+,Male,9640,46.065033755
+Education,Elementary,Female,7435,18.295425464
+Education,Elementary,Male,3279,8.8070507083
+Education,High,Female,9342,33.481916344
+Education,High,Male,8107,37.153201271
+Education,Middle,Female,3053,8.7189057368
+Education,Middle,Male,2364,7.8330902396
+Education,Missing,Female,68,0.2026303607
+Education,Missing,Male,40,0.1416240268
+Income,High,Female,8472,30.124753713
+Income,High,Male,7263,34.153770115
+Income,Low,Female,6249,16.909615007
+Income,Low,Male,3968,12.719992798
+Income,Mid-High,Female,8155,28.634156319
+Income,Mid-High,Male,6563,30.520897953
+Income,Mid-Low,Female,7494,23.952424258
+Income,Mid-Low,Male,5578,22.306571146
+Income,Missing,Female,98,0.3790507036
+Income,Missing,Male,58,0.2987679879
