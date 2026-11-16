@@ -112,3 +112,49 @@ age_fig("MAIN", 80, "Figure1.png")
 ses_fig("MAIN", "Figure2.png")
 age_fig("NOCOVID", 80, "FigureS1.png")
 age_fig("LEIS", 90, "FigureS2.png")
+
+
+def domain_fig(fname):
+    """Figure 3: total vs leisure-time aerobic definition, neither and both groups."""
+    series = [  # spec, outcome, label, color, marker, linestyle, filled
+        ("MAIN", "Y_NEITHER", "Neither — total activity", "#C8553D", "o", "-", True),
+        ("LEIS", "Y_NEITHER", "Neither — leisure-time only", "#C8553D", "o", (0, (4, 2)), False),
+        ("MAIN", "Y_BOTH", "Both — total activity", "#2E4057", "D", "-", True),
+        ("LEIS", "Y_BOTH", "Both — leisure-time only", "#2E4057", "D", (0, (4, 2)), False),
+    ]
+    fig, axes = plt.subplots(2, 2, figsize=(10.5, 7.2), sharey=True)
+    for r, sex in enumerate(["Male", "Female"]):
+        for c, fac in enumerate(["edu", "inc"]):
+            ax = axes[r, c]
+            levels = LEVELS[fac]
+            x = list(range(len(levels)))
+            for spec, out, lab, col, mk, ls, filled in series:
+                d = get(spec, sex, fac)
+                e = [d[(out, l)][0] for l in levels]
+                lo = [d[(out, l)][0] - d[(out, l)][1] for l in levels]
+                hi = [d[(out, l)][2] - d[(out, l)][0] for l in levels]
+                ax.errorbar(x, e, yerr=[lo, hi], fmt="none", ecolor=col, elinewidth=1.1, capsize=4, zorder=2)
+                ax.plot(x, e, color=col, ls=ls, lw=1.8, zorder=3)
+                ax.plot(x, e, color=col, marker=mk, ms=8, ls="none", zorder=4,
+                        mfc=col if filled else "white", mec=col, mew=1.6)
+            ax.set_xticks(x); ax.set_xticklabels(levels); ax.set_xlim(-0.55, len(levels) - 0.45)
+            style_ax(ax, 90, c == 0)
+            if r == 0:
+                ax.set_xticklabels([])
+                strip(ax, ["Education", "Household income"][c], "top", 0.1)
+            else:
+                plt.setp(ax.get_xticklabels(), rotation=25, ha="right")
+            if c == 1:
+                strip(ax, sex, "right")
+    h = [Line2D([0], [0], color=col, ls=ls, lw=1.8, marker=mk, ms=8, mfc=col if f else "white", mec=col, mew=1.6)
+         for _, _, _, col, mk, ls, f in series]
+    fig.legend(h, [s[2] for s in series], loc="upper center", ncol=2, frameon=False, bbox_to_anchor=(0.5, 0.995),
+               fontsize=11.5, handlelength=3.6, columnspacing=2.5)
+    fig.supylabel("Adjusted predicted probability (%)", fontsize=12.5, x=0.01)
+    fig.supxlabel("Educational attainment  |  Household income quartile", fontsize=12.5, y=0.015)
+    fig.subplots_adjust(left=0.08, right=0.95, top=0.84, bottom=0.14, wspace=0.05, hspace=0.06)
+    fig.savefig(f"{OUT}/{fname}", dpi=400)
+    plt.close(fig)
+
+
+domain_fig("Figure3.png")
