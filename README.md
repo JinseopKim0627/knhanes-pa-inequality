@@ -28,7 +28,7 @@ Required raw files (SAS format, `HNyy_ALL`): `HN14_ALL` to `HN23_ALL`. The first
 | `04_vif.sas` | Variance inflation factors for the primary covariate set | VIF tables |
 | `05_model_sample_audit.sas` | Checks the number of observations used by each model | `model_n_audit.csv` |
 
-3. Draw the figures from the exported margins:
+3. Draw Figures 1–3 and Supplementary Figures S1–S2 from the exported margins:
 
 ```
 python figures/make_figures.py results/final_margins.csv figures/
@@ -41,14 +41,14 @@ python figures/make_figures.py results/final_margins.csv figures/
 | File | Contents |
 |---|---|
 | `final_margins.csv` | Adjusted predicted probabilities and 95% CIs by sex, outcome, and age/education/income group for each analysis specification |
-| `final_differences.csv` | All pairwise adjusted differences |
+| `final_differences.csv` | All pairwise adjusted differences (age-group comparisons in Supplementary Table S2) |
 | `final_contrasts.csv` | Prespecified contrasts (Table 5, Supplementary Table S1): difference, 95% CI, p value |
 | `final_model_n.csv` | Observations and sum of weights per model |
 | `sample_flow.csv`, `missing_audit.csv` | Sample selection counts and education/income missingness |
 | `final_precision_check.csv` | Completeness check of the exported results |
 | `table1_check.csv` | Table 1 values |
 
-Analysis specifications: `MAIN` (primary), `NO2014` (excluding 2014), `NOCOVID` (excluding 2020–2021), `BMICHRONIC` (additional adjustment for body mass index and chronic disease), `LEIS` (aerobic activity restricted to leisure time).
+Analysis specifications: `MAIN` (primary), `NO2014`, `NOCOVID`, and `BMICHRONIC` (sensitivity analyses excluding 2014, excluding 2020–2021, and adding body mass index and chronic disease), and `LEIS` (secondary analysis with aerobic activity restricted to leisure time).
 
 ## License
 
